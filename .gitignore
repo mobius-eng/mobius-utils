@@ -5,3 +5,4 @@
 *.asd~
 *.dx64fsl
 *.dx32fsl
+*.DS_Store
