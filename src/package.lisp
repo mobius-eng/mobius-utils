@@ -10,6 +10,7 @@
            :abbrev
            :mvbind
            :dsbind
+           :with-vector-items
            :let1
            :if-aref
            :destructuring-array

@@ -324,3 +324,15 @@ using (! fn)"
 (defun hash-table-change (h key new-key new-value)
   (remhash key h)
   (setf (gethash new-key h) new-value))
+
+
+(defmacro with-vector-items (items vector &body body)
+  "Another approach to destructure vectors"
+  (let ((gv (gensym "VECTOR")))
+    (let ((bindings (mapcar (lambda (var-index)
+                              (destructuring-bind (var index) var-index
+                                `(,var (aref ,gv ,index))))
+                            items)))
+      `(let ((,gv ,vector))
+         (symbol-macrolet (,@bindings)
+           ,@body)))))
